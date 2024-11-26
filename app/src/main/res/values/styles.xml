@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomDateText">
+        <item name="android:textColor">@color/white</item> <!-- Set text color -->
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CustomHeaderText">
+        <item name="android:textColor">@color/white</item> <!-- Header text color -->
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TodayDateText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#FF4081</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

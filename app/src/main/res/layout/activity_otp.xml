@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".OtpActivity">
+
+    <RelativeLayout
+        android:id="@+id/LogInView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:id="@+id/login"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button_b"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:text="Login"
+                android:gravity="center"
+                android:textSize="20sp" />
+
+            <Button
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/signup"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:text="SignUp"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="10sp"
+            app:cardElevation="10sp"
+            android:layout_below="@id/title"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:backgroundTint="@color/black"
+            android:layout_marginTop="50sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginTop="40sp"
+                    android:src="@drawable/github_w"
+                    android:id="@+id/button"
+                    android:layout_width="150sp"
+                    android:layout_height="150sp"
+                    android:layout_centerHorizontal="true"
+                    android:text="github">
+                </ImageView>
+                <TextView
+                    android:layout_marginStart="10sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginBottom="30sp"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/button"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Tap logo to Sign In">
+                </TextView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/SignUpView"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:id="@+id/login1"
+                android:textColor="@color/black"
+                android:background="@drawable/custom_button"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:text="Login"
+                android:gravity="center"
+                android:textSize="20sp" />
+
+            <Button
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/signup1"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button_b"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:text="SignUp"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_below="@id/title1"
+            android:layout_marginStart="20sp"
+            android:backgroundTint="@color/black"
+            android:layout_marginEnd="20sp"
+            app:cardElevation="10sp"
+            app:cardCornerRadius="10sp"
+            android:layout_marginTop="50sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginTop="40sp"
+                    android:src="@drawable/github_w"
+                    android:id="@+id/button1"
+                    android:layout_width="150sp"
+                    android:layout_height="150sp"
+                    android:layout_centerHorizontal="true"
+                    android:text="github">
+                </ImageView>
+                <TextView
+                    android:layout_marginStart="10sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/button1"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Tap logo to Sign In">
+                </TextView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

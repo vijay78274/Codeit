@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "474441271420",
+    "firebase_url": "https://codeit-dbbfe-default-rtdb.firebaseio.com",
+    "project_id": "codeit-dbbfe",
+    "storage_bucket": "codeit-dbbfe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474441271420:android:4e93bd60bdc4235760e1f9",
+        "android_client_info": {
+          "package_name": "com.example.codeit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3CB8KZYSOPodcqgUKy0aWE0Uku4Znees"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

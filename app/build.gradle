@@ -1,0 +1,58 @@
+plugins {
+    alias(libs.plugins.android.application)
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.example.codeit'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.codeit"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures{
+        viewBinding true;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation libs.firebase.database
+    configurations {
+        implementation.exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
+    }
+    implementation "com.github.prolificinteractive:material-calendarview:2.0.0"
+    implementation libs.glide.v4151
+    implementation libs.threetenabp
+    annotationProcessor libs.compiler.v4151
+    implementation libs.material.calendarview
+    implementation libs.recyclerview
+    implementation libs.glide
+    annotationProcessor libs.compiler
+    implementation(libs.firebase.auth)
+    implementation platform(libs.firebase.bom)
+    implementation libs.browser
+    implementation libs.okhttp
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}

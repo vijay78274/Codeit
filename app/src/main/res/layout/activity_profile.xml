@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+    <androidx.cardview.widget.CardView
+        android:background="@color/white"
+        android:id="@+id/head"
+        android:backgroundTint="@color/black"
+        android:elevation="10sp"
+        app:cardCornerRadius="10sp"
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="Profile"
+        android:layout_width="match_parent"
+        android:layout_margin="10sp"
+        android:layout_height="50sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_below="@id/head"
+        android:elevation="10sp"
+        app:cardCornerRadius="10sp"
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:gravity="center"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_margin="10sp"
+                android:id="@+id/image"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150sp"
+                android:layout_height="150sp" />
+
+            <EditText
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/custom_edittext"
+                android:layout_below="@id/image"
+                android:id="@+id/name"
+                android:text="Name"
+                android:layout_margin="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="50sp" />
+
+            <EditText
+                android:background="@drawable/custom_edittext"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_below="@id/name"
+                android:id="@+id/email"
+                android:text="email"
+                android:layout_width="match_parent"
+                android:layout_margin="10sp"
+                android:layout_height="50sp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_below="@id/email"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:layout_margin="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:background="@color/black">
+            </Button>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

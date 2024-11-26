@@ -1,0 +1,63 @@
+ngrok keys: 
+JJWUBT7V52
+NNCNDRUKEY
+BYUQGEMQNM
+P9RNX4EMVF
+NHPMSKN2J7
+2Q57K5DQ4K
+Q64ZFB2PSG
+4HDJZ9DXUQ
+4K98FGRBJA
+6NFJUYM59Cs
+
+ngork authToken : a2omP3VekzNFypxzHA1IHg18EHCh_5cbuuamCUom9Zr4U1pa4d
+
+Employee Management Key:
+5ccfa4e1-39c0-4b2a-a5f9-ed47e13a0f5c
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center; /* Center the modal content */
+    align-items: center;
+}
+.modal-content {
+    display: grid;
+    place-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    height: 50%;
+    width: 50%; /* You can adjust the size */
+}
+.modal h2{
+    text-align: center;
+}
+.modal button{
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: blue;
+    font-size: 15px;
+    color: white;
+}
+input{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px
+}
+#close{
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: blue;
+    font-size: 15px;
+    color: white;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}
