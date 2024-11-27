@@ -13,8 +13,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.example.codeit.Model.ApiClient;
 import com.example.codeit.Model.ContentModel;
+import com.example.codeit.Model.MainContentModel;
 import com.example.codeit.databinding.ActivityMainContentBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,8 +40,10 @@ String title;
 List<String> itemList;
 FirebaseDatabase database;
 MainContentAdapter adapter;
+boolean status;
 String count;
 List<String> countList;
+String image;
 String str;
 String course;
     String pre;
@@ -54,6 +58,7 @@ String course;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        status=false;
         database=FirebaseDatabase.getInstance();
         title = getIntent().getStringExtra("title");
         course=getIntent().getStringExtra("course");
@@ -61,12 +66,16 @@ String course;
         binding.title.setText(title);
         itemList = new ArrayList<>();
         countList = new ArrayList<>();
-        database.getReference("Contents").child(course).child(count).child("pre").addListenerForSingleValueEvent(new ValueEventListener() {
+        database.getReference("Contents").child(course).child(count).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                pre = snapshot.getValue(String.class);
-                Log.d("Prerequisit : ",pre);
+                MainContentModel model = snapshot.getValue(MainContentModel.class);
+//                pre = snapshot.getValue(String.class);
+                pre=model.getPre();
+                image=model.getImageUrl();
+//                Log.d("Prerequisit : ",pre);
                 binding.pre.setText(pre);
+                Glide.with(MainContent.this).load(image).into(binding.imageView);
             }
 
             @Override
@@ -78,7 +87,6 @@ String course;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    ContentModel content = dataSnapshot.getValue(ContentModel.class);
                     String title = dataSnapshot.child("count").getValue(String.class);
                     itemList.add(title);
                     adapter.notifyDataSetChanged();
@@ -182,6 +190,9 @@ String course;
                                         binding.img3.setImageResource(R.drawable.cancel);
                                         binding.text3.setText("Test 3 failed");
                                     }
+                                    if(substring2&&substring1&&substring3){
+                                        status=true;
+                                    }
                                 });
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -195,6 +206,16 @@ String course;
                         }
                     });
                 }
+            }
+        });
+        if(status){
+            database.getReference("Contents").child(course).child(count).child("status").setValue(true);
+        }
+        binding.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FullScreenImage dialogFragment = FullScreenImage.newInstance(image);
+                dialogFragment.show(getSupportFragmentManager(), "FullScreenImageDialog");
             }
         });
     }

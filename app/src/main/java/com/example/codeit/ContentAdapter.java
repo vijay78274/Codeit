@@ -49,6 +49,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
                 context.startActivity(intent);
             }
         });
+        if(item.isStatus()){
+            holder.status.setVisibility(View.VISIBLE);
+            holder.status.setImageResource(R.drawable.correct);
+        }
     }
 
     @Override
@@ -59,10 +63,12 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView count;
         TextView title;
+        ImageView status;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             count = itemView.findViewById(R.id.count);
             title = itemView.findViewById(R.id.title);
+            status = itemView.findViewById(R.id.status);
         }
     }
 }

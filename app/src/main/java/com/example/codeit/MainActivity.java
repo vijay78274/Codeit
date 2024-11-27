@@ -69,21 +69,10 @@ private List<ItemModel> itemList;
         binding.calendarView.setSelectedDate(CalendarDay.today());
         binding.calendarView.addDecorator(new TodayDecorator(this));
         binding.calendarView.setOnDateChangedListener((widget, date, selected) -> {
-//            String selectedDate = date.getDate().toString(); // Format: yyyy-MM-dd
             String selectedDate = date.getYear() + "-" + date.getMonth() + "-" + date.getDay();
             Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
             intent.putExtra("SELECTED_DATE", selectedDate);
             startActivity(intent);
-//            if (questionMap.containsKey(selectedDate)) {
-//                Question selectedQuestion = questionMap.get(selectedDate);
-//
-//                // Navigate to QuestionActivity
-//                Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
-//                intent.putExtra("question", selectedQuestion.getQuestionText());
-//                startActivity(intent);
-//            } else {
-//                Toast.makeText(MainActivity.this, "No question for this date.", Toast.LENGTH_SHORT).show();
-//            }
         });
 
         itemList = new ArrayList<>();

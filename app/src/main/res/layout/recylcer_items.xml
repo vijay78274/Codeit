@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_margin="5sp"
+    android:layout_height="200sp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -9,11 +10,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/imageview"
                 android:layout_width="match_parent"
                 android:layout_height="150sp"
-                android:src="@drawable/github_w"></ImageView>
+                android:src="@drawable/github_w" />
+
             <TextView
                 android:id="@+id/courseName"
                 android:text="CourseName"
@@ -22,7 +25,7 @@
                 android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageview"></TextView>
+                android:layout_below="@id/imageview" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

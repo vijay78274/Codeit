@@ -1,18 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
+    android:background="@color/white"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     tools:context=".Model.QuestionsActivity"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/questionText"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@android:color/black" />
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:weightSum="3">
+
+                    <!-- Placeholder for text -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="100sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_weight="1"
+                        android:background="@android:color/darker_gray" />
+
+                    <!-- Placeholder for image -->
+                    <View
+                        android:layout_marginBottom="15sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_weight="1"
+                        android:background="@android:color/darker_gray" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="15sp"
+                        android:background="@android:color/darker_gray" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_weight="1"
+                        android:background="@android:color/darker_gray" />
+                </LinearLayout>
+
+            </ScrollView>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_margin="10sp"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:text="TextBox"
+                android:textColor="@color/white" />
+            <LinearLayout
+                android:id="@+id/questionLayout"
+                android:layout_marginTop="10sp"
+                android:background="@color/black"
+                android:layout_below="@id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/questionText"
+                    android:layout_margin="10sp"
+                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:text="Question is loading....."
+                    android:layout_height="wrap_content"></TextView>
+
+                <com.github.chrisbanes.photoview.PhotoView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:src="@drawable/github_w" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linkLayout"
+                android:layout_marginTop="10sp"
+                android:background="@color/black"
+                android:layout_below="@id/questionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/link"
+                    android:layout_margin="10sp"
+                    android:background="@drawable/round_view"
+                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:paddingStart="5sp"
+                    android:textColorHint="@color/white"
+                    android:textColor="@android:color/darker_gray"
+                    android:hint="Paste your repository github url here"
+                    android:layout_height="50sp" />
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_margin="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:background="@drawable/custom_button"
+                    android:layout_gravity="center"
+                    android:text="submit" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/testLayout"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5sp"
+                android:layout_below="@id/linkLayout"
+                android:layout_margin="10sp">
+
+                <RelativeLayout
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+                    <TextView
+                        android:id="@+id/testhead"
+                        android:gravity="center"
+                        android:padding="5sp"
+                        android:text="TEST RESULTS"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50sp">
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_margin="5sp"
+                        android:id="@+id/testResult1"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/testhead"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginEnd="5sp"
+                            android:id="@+id/img1"
+                            android:layout_width="40sp"
+                            android:layout_height="40sp" />
+                        <TextView
+                            android:id="@+id/text1"
+                            android:padding="5sp"
+                            android:text="sjfkldsjfljskjl"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="50sp">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_margin="5sp"
+                        android:id="@+id/testResult2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/testResult1"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginEnd="5sp"
+                            android:id="@+id/img2"
+                            android:layout_width="40sp"
+                            android:layout_height="40sp" />
+                        <TextView
+                            android:id="@+id/text2"
+                            android:padding="5sp"
+                            android:text="sjfkldsjfljskjl"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="50sp">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginEnd="5sp"
+                        android:id="@+id/testResult3"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/testResult2"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_margin="5sp"
+                            android:layout_width="40sp"
+                            android:layout_height="40sp" />
+                        <TextView
+                            android:id="@+id/text3"
+                            android:padding="5sp"
+                            android:text="sjfkldsjfljskjl"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="10sp"
+                            android:layout_height="50sp">
+                        </TextView>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>

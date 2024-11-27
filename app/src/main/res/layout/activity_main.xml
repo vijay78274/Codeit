@@ -34,63 +34,28 @@
                     app:mcv_showOtherDates="all">
                 </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
             </androidx.cardview.widget.CardView>
-            <!--    <Button-->
-            <!--        android:layout_below="@id/cardView"-->
-            <!--        android:id="@+id/button"-->
-            <!--        android:layout_width="wrap_content"-->
-            <!--        android:layout_height="wrap_content"-->
-            <!--        android:text="Hello World!" />-->
-
-            <!--    <EditText-->
-            <!--        android:layout_below="@id/button"-->
-            <!--        android:id="@+id/link"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="50sp"-->
-            <!--        android:background="@drawable/custom_edittext"-->
-            <!--        android:textSize="20sp"-->
-            <!--        android:layout_margin="20sp" />-->
-
-            <!--    <Button-->
-            <!--        android:id="@+id/send"-->
-            <!--        android:layout_below="@id/link"-->
-            <!--        android:layout_height="50sp"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:text="submit"-->
-            <!--        android:textColor="@color/white"-->
-            <!--        android:background="@color/black"-->
-            <!--        android:layout_margin="20sp">-->
-
-            <!--    </Button>-->
-            <!--    <TextView-->
-            <!--        android:id="@+id/result"-->
-            <!--        android:visibility="gone"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="50sp"-->
-            <!--        android:layout_below="@id/send"-->
-            <!--        android:layout_margin="20sp"></TextView>-->
 
             <TextView
                 android:id="@+id/text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40sp"
                 android:layout_below="@id/cardView"
                 android:layout_margin="20px"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20px"
                 android:background="@color/black"
                 android:gravity="center"
                 android:text="Projects"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:background="@color/black"
                 tools:listitem="@layout/recylcer_items"
                 android:id="@+id/recycler"
                 android:layout_margin="10sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/text"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_below="@id/text" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

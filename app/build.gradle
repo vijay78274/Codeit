@@ -33,13 +33,15 @@ android {
 
 dependencies {
     implementation libs.firebase.database
+    implementation libs.firebase.firestore
     configurations {
         implementation.exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
     }
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation libs.shimmer
     implementation "com.github.prolificinteractive:material-calendarview:2.0.0"
-    implementation libs.glide.v4151
-    implementation libs.threetenabp
     annotationProcessor libs.compiler.v4151
+    implementation libs.threetenabp
     implementation libs.material.calendarview
     implementation libs.recyclerview
     implementation libs.glide

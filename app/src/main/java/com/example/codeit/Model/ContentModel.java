@@ -3,6 +3,16 @@ package com.example.codeit.Model;
 public class ContentModel {
     String title, count;
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    boolean status;
+
     public String getCourse() {
         return course;
     }
@@ -15,9 +25,10 @@ public class ContentModel {
     public ContentModel(){
 
     }
-    public ContentModel(String count, String title){
+    public ContentModel(String count, String title, boolean status){
         this.count=count;
         this.title=title;
+        this.status=status;
     }
 
     public String getTitle() {

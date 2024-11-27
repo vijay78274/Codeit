@@ -6,7 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".CourseView">
 
-    <TextView
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:weightSum="8">
+
+                <!-- Placeholder for text -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_marginBottom="15sp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray" />
+
+                <!-- Placeholder for image -->
+                <View
+                    android:layout_marginBottom="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="15sp"
+                    android:background="@android:color/darker_gray" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="15sp"
+                    android:background="@android:color/darker_gray" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="15sp"
+                    android:background="@android:color/darker_gray" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="15sp"
+                    android:background="@android:color/darker_gray" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray" />
+            </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
         android:layout_marginTop="20sp"
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -17,11 +81,13 @@
         android:textStyle="bold"
         android:text="Tittle" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        tools:listitem="@layout/course_contents"
-        android:layout_marginTop="20sp"
-        android:id="@+id/recycler"
-        android:layout_below="@id/title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            tools:listitem="@layout/course_contents"
+            android:layout_marginTop="20sp"
+            android:id="@+id/recycler"
+            android:layout_below="@id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
 </RelativeLayout>
