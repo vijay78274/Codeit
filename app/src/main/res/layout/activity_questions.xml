@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Model.QuestionsActivity"
+    tools:context=".QuestionsActivity"
     android:padding="16dp">
 
     <RelativeLayout

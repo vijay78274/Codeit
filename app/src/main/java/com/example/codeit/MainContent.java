@@ -14,9 +14,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
-import com.example.codeit.Model.ApiClient;
-import com.example.codeit.Model.ContentModel;
+import com.example.codeit.Adapters.MainContentAdapter;
+import com.example.codeit.Networking.ApiClient;
 import com.example.codeit.Model.MainContentModel;
+import com.example.codeit.Views.FullScreenImage;
 import com.example.codeit.databinding.ActivityMainContentBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,13 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class MainContent extends AppCompatActivity {
 ActivityMainContentBinding binding;
@@ -192,6 +188,8 @@ String course;
                                     }
                                     if(substring2&&substring1&&substring3){
                                         status=true;
+                                        database.getReference("Contents").child(course).child(count).child("status").setValue(status);
+                                        Log.d("status: ",String.valueOf(status));
                                     }
                                 });
                             } catch (JSONException e) {
@@ -208,9 +206,9 @@ String course;
                 }
             }
         });
-        if(status){
-            database.getReference("Contents").child(course).child(count).child("status").setValue(true);
-        }
+//        if(status){
+//            database.getReference("Contents").child(course).child(count).child("status").setValue(true);
+//        }
         binding.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

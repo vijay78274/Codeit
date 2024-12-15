@@ -7,7 +7,92 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:visibility="gone"
+        android:id="@+id/toolbar"
+        android:layout_marginBottom="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black">
+
+        <RelativeLayout
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Codeit"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+            <!-- Back Button -->
+            <ImageView
+                android:id="@+id/back"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:padding="10dp"
+                android:src="@drawable/baseline_arrow_back_ios_24"
+                android:contentDescription="Back" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:visibility="gone"
+        android:id="@+id/shrimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_margin="10sp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_marginBottom="25sp"
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@android:color/darker_gray">
+                </View>
+                <View
+                    android:layout_marginBottom="20sp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp">
+                </View>
+                <View
+                    android:background="@android:color/darker_gray"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="20sp"
+                    android:layout_height="40dp">
+                </View>
+
+                <View
+                    android:layout_marginBottom="20sp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp">
+                </View>
+
+            </LinearLayout>
+        </ScrollView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <ScrollView
+        android:layout_below="@id/toolbar"
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:fillViewport="true"
         android:layout_height="match_parent">
@@ -15,7 +100,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:layout_margin="10sp"
+                android:id="@+id/daily"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Daily Challenges"
+                android:textColor="@color/white"
+                android:background="@color/black" />
             <androidx.cardview.widget.CardView
+                android:layout_marginTop="10sp"
+                android:layout_below="@id/daily"
                 android:id="@+id/cardView"
                 android:layout_centerHorizontal="true"
                 app:cardCornerRadius="10sp"
@@ -35,6 +132,29 @@
                 </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
             </androidx.cardview.widget.CardView>
 
+<!--            <TextView-->
+<!--                android:id="@+id/recommend"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:background="@color/black"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="40sp"-->
+<!--                android:text="Recommended"-->
+<!--                android:layout_below="@id/cardView"-->
+<!--                android:layout_margin="20px" />-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                tools:listitem="@layout/recylcer_items"-->
+<!--                android:scrollbars="horizontal"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_margin="10sp"-->
+<!--                android:background="@color/black"-->
+<!--                android:layout_below="@id/recommend"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/recommendView" />-->
             <TextView
                 android:id="@+id/text"
                 android:layout_width="match_parent"

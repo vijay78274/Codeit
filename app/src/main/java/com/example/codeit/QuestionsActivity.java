@@ -1,4 +1,4 @@
-package com.example.codeit.Model;
+package com.example.codeit;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,8 +14,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
-import com.example.codeit.FullScreenImage;
-import com.example.codeit.R;
+import com.example.codeit.Model.Question;
+import com.example.codeit.Networking.ApiClient;
+import com.example.codeit.Views.FullScreenImage;
 import com.example.codeit.databinding.ActivityQuestionsBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

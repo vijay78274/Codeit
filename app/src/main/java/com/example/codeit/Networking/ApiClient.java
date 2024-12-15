@@ -1,4 +1,4 @@
-package com.example.codeit.Model;
+package com.example.codeit.Networking;
 
 import okhttp3.*;
 import org.json.JSONException;
@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ApiClient {
 
-    private static final String BASE_URL = " http://192.168.241.98:8080/api/projects/checkSubstring";
+    private static final String BASE_URL = " http://192.168.149.98:8080/api/projects/checkSubstring";
 
 public static void sendStringToServer(String providedString, final ApiCallback callback) {
     OkHttpClient client = new OkHttpClient();

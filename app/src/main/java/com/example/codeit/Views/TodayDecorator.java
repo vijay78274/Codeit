@@ -1,17 +1,16 @@
-package com.example.codeit;
+package com.example.codeit.Views;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import androidx.core.content.ContextCompat;
 
+import com.example.codeit.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
 
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.ZoneId;
-
-import java.util.Calendar;
 
 public class TodayDecorator implements DayViewDecorator {
     private final CalendarDay today;

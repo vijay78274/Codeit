@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileView">
+
+    <TextView
+        android:id="@+id/title"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:textColor="@color/white"
+        android:text="Profile"
+        android:layout_margin="10sp"></TextView>
+    <androidx.cardview.widget.CardView
+        android:layout_below="@id/title"
+        android:layout_margin="10sp"
+        app:cardElevation="10sp"
+        app:cardCornerRadius="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_margin="10sp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/profile_image"
+            android:layout_width="150dp"
+            android:src="@drawable/profile_image"
+            android:layout_height="150dp">
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <EditText
+            android:paddingStart="10sp"
+            android:text="Name"
+            android:id="@+id/name"
+            android:layout_margin="20sp"
+            android:layout_below="@id/profile_image"
+            android:layout_width="match_parent"
+            android:background="@drawable/custom_edittext"
+            android:layout_height="50dp" />
+        <EditText
+            android:text="Email"
+            android:paddingStart="10sp"
+            android:id="@+id/email"
+            android:layout_marginRight="20sp"
+            android:layout_marginLeft="20sp"
+            android:layout_below="@id/name"
+            android:layout_width="match_parent"
+            android:background="@drawable/custom_edittext"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/button"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_below="@id/email"
+            android:text="set profile"
+            android:background="@drawable/custom_button_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"></Button>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

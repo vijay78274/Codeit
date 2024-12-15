@@ -43,7 +43,7 @@ public class OtpActivity extends AppCompatActivity {
                 binding.LogInView.setVisibility(View.VISIBLE);
             }
         });
-        // GitHub OAuth URL setup
+
         binding.button.setOnClickListener(v -> {
             OAuthProvider.Builder provider = OAuthProvider.newBuilder("github.com");
             provider.addCustomParameter("prompt", "consent");
@@ -56,7 +56,7 @@ public class OtpActivity extends AppCompatActivity {
                             String uid = user.getUid();            // User ID
                             String name = user.getDisplayName();    // Display name
                             String email = user.getEmail();         // Email address
-                            Uri photoUrl = user.getPhotoUrl();      // Profile photo URL (if available)
+                            Uri photoUrl = user.getPhotoUrl();      // Profile photo URL
 
                             // Print or use the data
                             Log.d("GitHubUser", "User ID: " + uid);
@@ -71,7 +71,6 @@ public class OtpActivity extends AppCompatActivity {
                             intent.putExtra("photoUrl",photoUrl.toString());
                             startActivity(intent);
                         }
-                        // Handle signed-in user info here
                     })
                     .addOnFailureListener(e -> {
                         // Handle failure

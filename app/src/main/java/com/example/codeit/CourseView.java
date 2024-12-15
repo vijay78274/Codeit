@@ -1,10 +1,8 @@
 package com.example.codeit;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -12,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.codeit.Adapters.ContentAdapter;
 import com.example.codeit.Model.ContentModel;
 import com.example.codeit.databinding.ActivityCourseViewBinding;
 import com.google.firebase.database.DataSnapshot;

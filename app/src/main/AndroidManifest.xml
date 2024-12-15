@@ -16,7 +16,13 @@
         android:theme="@style/Theme.Codeit"
         tools:targetApi="31">
         <activity
-            android:name=".Model.QuestionsActivity"
+            android:name=".ProfileView"
+            android:exported="false" />
+        <activity
+            android:name=".Setting"
+            android:exported="false" />
+        <activity
+            android:name=".QuestionsActivity"
             android:exported="false" />
         <activity
             android:name=".MainContent"

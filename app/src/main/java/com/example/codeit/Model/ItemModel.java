@@ -1,6 +1,4 @@
-package com.example.codeit;
-
-import android.media.Image;
+package com.example.codeit.Model;
 
 public class ItemModel {
     private String course;

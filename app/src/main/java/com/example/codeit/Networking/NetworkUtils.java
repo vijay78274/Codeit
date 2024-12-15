@@ -1,4 +1,4 @@
-package com.example.codeit;
+package com.example.codeit.Networking;
 
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class NetworkUtils {
 
-    private static final String BASE_URL = "https://c896-2409-4085-8e83-743a-cd73-394-518a-a8c5.ngrok-free.app" ; // Or your backend URL
+    private static final String BASE_URL = "https://localhost:8080" ;
 
     // Initialize OkHttp client
     private static OkHttpClient client = new OkHttpClient();

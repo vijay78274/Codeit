@@ -2,8 +2,12 @@ package com.example.codeit;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,10 +18,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.codeit.Adapters.ItemAdapter;
+import com.example.codeit.Model.ItemModel;
 import com.example.codeit.Model.Question;
-import com.example.codeit.Model.QuestionsActivity;
+import com.example.codeit.Views.CompletedTaskDecorator;
+import com.example.codeit.Views.NotCompletedTaskDecorator;
+import com.example.codeit.Views.TodayDecorator;
 import com.example.codeit.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,21 +34,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 ActivityMainBinding binding;
@@ -49,7 +45,7 @@ FirebaseAuth auth;
 private ItemAdapter itemAdapter;
 FirebaseDatabase database;
 private List<ItemModel> itemList;
-    Map<String, Question> questionMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +60,63 @@ private List<ItemModel> itemList;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        questionMap = new HashMap<>();
-        initializeQuestions();
-        binding.calendarView.setSelectedDate(CalendarDay.today());
+        setSupportActionBar(binding.toolbar);
+        //Shrimmer
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Once data is loaded, stop the shimmer and show real content
+                binding.shrimmer.stopShimmer();
+                binding.shrimmer.setVisibility(View.GONE);
+
+                // Display real content here (e.g., RecyclerView, TextViews, etc.)
+                binding.content.setVisibility(View.VISIBLE);
+                binding.toolbar.setVisibility(View.VISIBLE);
+            }
+        }, 3000);
+
+        Calendar calendar = Calendar.getInstance();
+        CalendarDay today = CalendarDay.today();;
+        binding.calendarView.setSelectedDate(today);
         binding.calendarView.addDecorator(new TodayDecorator(this));
+        binding.calendarView.state().edit()
+                .setMaximumDate(CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.getActualMaximum(Calendar.DAY_OF_MONTH)))
+                .commit();
+        //daily task done
+        HashSet<CalendarDay> completedDates = new HashSet<>();
+        HashSet<CalendarDay> notCompleted = new HashSet<>();
+        database.getReference("Question").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot datasnapshot: snapshot.getChildren()){
+                    Question question = datasnapshot.getValue(Question.class);
+                    String[] parts = question.getDate().split("-");
+                    int year = Integer.parseInt(parts[0]);
+                    int month = Integer.parseInt(parts[1]);
+                    int day = Integer.parseInt(parts[2]);
+                    if(question.getStatus()) {
+                        completedDates.add(CalendarDay.from(year,month,day));
+                    }
+                    else{
+                        notCompleted.add(CalendarDay.from(year,month,day));
+                    }
+                    itemAdapter.notifyDataSetChanged();
+                    binding.calendarView.addDecorator(new NotCompletedTaskDecorator(MainActivity.this, notCompleted));
+                    binding.calendarView.addDecorator(new CompletedTaskDecorator(MainActivity.this, completedDates));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//        completedDates.add(CalendarDay.from(2024, 11, 25));
+//        completedDates.add(CalendarDay.from(2024, 11, 26));
+//        notCompleted.add(CalendarDay.from(2024, 11, 19));
+//        notCompleted.add(CalendarDay.from(2024, 11, 20));
+        //on date click
         binding.calendarView.setOnDateChangedListener((widget, date, selected) -> {
             String selectedDate = date.getYear() + "-" + date.getMonth() + "-" + date.getDay();
             Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
@@ -86,6 +135,10 @@ private List<ItemModel> itemList;
         binding.recycler.setLayoutManager(gridLayoutManager);
         itemAdapter = new ItemAdapter(this,itemList);
         binding.recycler.setAdapter(itemAdapter);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//        binding.recommendView.setLayoutManager(layoutManager);
+//        binding.recommendView.setAdapter(itemAdapter);
+
 //        database.getReference("courseImages").addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -154,9 +207,56 @@ private List<ItemModel> itemList;
 //            }
 //        });
     }
-    private void initializeQuestions() {
-        questionMap.put("2024-11-25", new Question("2024-11-25", "What is Java?"));
-        questionMap.put("2024-11-26", new Question("2024-11-26", "Explain OOP concepts."));
-        // Add more questions for other dates
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.settings){
+//            Toast.makeText(MainActivity.this,"Setting clicked",Toast.LENGTH_SHORT).show();
+            findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPopupMenu(view);
+                }
+            });
+            return true;
+        }
+        else if(id==R.id.profile){
+            Toast.makeText(MainActivity.this,"Profile clicked",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, ProfileView.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
+    }
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.pop_menu, popupMenu.getMenu());
+        // Set a click listener for menu item clicks
+        popupMenu.setOnMenuItemClickListener(item -> {
+            int itemid = item.getItemId();
+            if(itemid==R.id.action_one){
+                Toast.makeText(MainActivity.this,"Action2 clicked",Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            else if(itemid==R.id.action_two){
+                Toast.makeText(MainActivity.this,"Action2 clicked",Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            else if(itemid==R.id.action_three){
+                auth.signOut();
+                Intent intent = new Intent(MainActivity.this,OtpActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+            }
+            return false;
+        });
+        popupMenu.show();
     }
 }

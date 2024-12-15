@@ -1,8 +1,19 @@
 package com.example.codeit.Model;
 
 public class Question {
-    private String date; // Use a string format like "yyyy-MM-dd"
+    private String date;
     private String questionText;
+    private boolean status;
+    private String title;
+    private String image;
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public String getTitle() {
         return title;
@@ -12,7 +23,6 @@ public class Question {
         this.title = title;
     }
 
-    private String title;
     public String getImage() {
         return image;
     }
@@ -29,10 +39,12 @@ public class Question {
         this.date = date;
     }
 
-    private String image;
-    public Question(String date, String questionText) {
+    public Question(String date, String image, String questionText, boolean status, String title) {
         this.date = date;
+        this.image = image;
         this.questionText = questionText;
+        this.status = status;
+        this.title = title;
     }
     public Question(){}
     public String getDate() {

@@ -17,7 +17,6 @@
                 android:padding="16dp"
                 android:weightSum="8">
 
-                <!-- Placeholder for text -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="30sp"
@@ -25,7 +24,6 @@
                     android:layout_weight="1"
                     android:background="@android:color/darker_gray" />
 
-                <!-- Placeholder for image -->
                 <View
                     android:layout_marginBottom="15sp"
                     android:layout_width="match_parent"

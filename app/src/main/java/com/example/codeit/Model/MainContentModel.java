@@ -5,6 +5,16 @@ import java.util.List;
 public class MainContentModel {
     String course;
     String pre;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    boolean status;
 //    List<String> steps;
 
 //    public List<String> getSteps() {

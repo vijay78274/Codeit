@@ -37,6 +37,7 @@ dependencies {
     configurations {
         implementation.exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
     }
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation libs.shimmer
     implementation "com.github.prolificinteractive:material-calendarview:2.0.0"
